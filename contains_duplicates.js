@@ -30,10 +30,41 @@ function containsDuplicate(nums) {
     } 
     hash[num]++
   }
-  console.log(hash)
-  console.log(Object.values(hash))
+  // console.log(hash)
+  // console.log(Object.values(hash))
+  const values = Object.values(hash)
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] > 1) {
+      return true
+    }
+  }
+  return false
 }
 
-console.log(containsDuplicate([1,2,3]))
+// console.log(containsDuplicate([1,2,3]))
 // console.log(containsDuplicate([1,2,3,1]))
 // console.log(containsDuplicate([1,2,3,4,5,6,7,8]))
+
+
+// Better solution, not the best
+
+function containsDuplicate(nums) {
+  const seen = new Set()
+  for (let i = 0; i < nums.length; i++) {
+    if (seen.has(nums[i])) {
+      return true
+    }
+    seen.add(nums[i])
+  }
+  return false
+}
+
+// Very good solution (Set stores unique values only)
+
+console.log(containsDuplicate([1,2,3]))
+console.log(containsDuplicate([1,2,3,1]))
+console.log(containsDuplicate([1,2,3,4,5,6,7,8]))
+
+// let nums = [1,2,3,4,4,5]
+// const seen = new Set(nums)
+// console.log(seen)
